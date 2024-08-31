@@ -42,6 +42,7 @@ for entry in feed.entries:
             repo.git.commit('-m', f'Add post: {entry.title}')
             print("git commit for adding : " + entry.title)
         except:
+            print("Commit Error occured")
             continue
 
     # 파일이 존재할 경우 커밋
@@ -50,6 +51,7 @@ for entry in feed.entries:
             repo.git.commit('-m', f'Modify post: {entry.title}')
             print("git commit for modifying: " + entry.title)
         except:
+            print("Commit Error occured")
             continue
     
     with open(file_path, 'w', encoding='utf-8') as file:
