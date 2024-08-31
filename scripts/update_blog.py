@@ -32,8 +32,9 @@ for entry in feed.entries:
     file_name += '.md'
     file_path = os.path.join(posts_dir, file_name)
 
+    
     repo.git.add(file_path)
-
+    print(file_path)
     # 파일이 이미 존재하지 않을 경우 커밋
     try:
         if not os.path.exists(file_path):
