@@ -34,12 +34,12 @@ for entry in feed.entries:
 
     # 파일이 이미 존재하지 않으면 생성
 
-with open(file_path, 'w', encoding='utf-8') as file:
-    file.write(entry.description)  # 글 내용을 파일에 작성
+    with open(file_path, 'w', encoding='utf-8') as file:
+        file.write(entry.description)  # 글 내용을 파일에 작성
 
-# 깃허브 커밋
-repo.git.add(file_path)
-repo.git.commit('-m', f'Add post: {entry.title}')
+    # 깃허브 커밋
+    repo.git.add(file_path)
+    repo.git.commit('-m', f'Add post: {entry.title}')
 
 # 변경 사항을 깃허브에 푸시
 repo.git.push()
