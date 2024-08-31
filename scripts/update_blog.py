@@ -42,7 +42,7 @@ for entry in feed.entries:
         repo.git.commit('-m', f'Modify post: {entry.title}')
     
     with open(file_path, 'w', encoding='utf-8') as file:
-    	try : 
+        try: 
             file.write(entry.description)  # 글 내용을 파일에 작성
             print(entry.title)
         except AttributeError as err:
