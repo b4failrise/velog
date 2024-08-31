@@ -45,7 +45,7 @@ for entry in feed.entries:
     	try : 
             file.write(entry.description)  # 글 내용을 파일에 작성
             print(entry.title)
-        except AttriuteError as err:
+        except AttributeError as err:
             print(err)
     
 # 변경 사항을 깃허브에 푸시
