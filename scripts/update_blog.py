@@ -36,15 +36,22 @@ for entry in feed.entries:
     repo.git.add(file_path)
     print(file_path)
     # 파일이 이미 존재하지 않을 경우 커밋
-    try:
-        if not os.path.exists(file_path):
-                repo.git.commit('-m', f'Add post: {entry.title}')
-    
-        # 파일이 존재할 경우 커밋
-        else:
+
+    if not os.path.exists(file_path):
+        try:
+            repo.git.commit('-m', f'Add post: {entry.title}')
+            print("git commit for adding : " + entry.title)
+        except:
+            continue
+
+    # 파일이 존재할 경우 커밋
+    else:
+        try:
             repo.git.commit('-m', f'Modify post: {entry.title}')
-    except:
-        continue
+            print("git commit for modifying: " + entry.title)
+        except:
+            continue
+    
     with open(file_path, 'w', encoding='utf-8') as file:
         try: 
             file.write(entry.description)  # 글 내용을 파일에 작성
