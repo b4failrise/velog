@@ -31,18 +31,19 @@ for entry in feed.entries:
     # 필요에 따라 추가 문자 대체
     file_name += '.md'
     file_path = os.path.join(posts_dir, file_name)
+
+    repo.git.add(file_path)
+
+    # 파일이 이미 존재하지 않을 경우 커밋
     try:
-        repo.git.add(file_path)
+        if not os.path.exists(file_path):
+                repo.git.commit('-m', f'Add post: {entry.title}')
+    
+        # 파일이 존재할 경우 커밋
+        else:
+            repo.git.commit('-m', f'Modify post: {entry.title}')
     except:
         continue
-    # 파일이 이미 존재하지 않을 경우 커밋
-    if not os.path.exists(file_path):
-        repo.git.commit('-m', f'Add post: {entry.title}')
-
-    # 파일이 존재할 경우 커밋
-    else:
-        repo.git.commit('-m', f'Modify post: {entry.title}')
-    
     with open(file_path, 'w', encoding='utf-8') as file:
         try: 
             file.write(entry.description)  # 글 내용을 파일에 작성
