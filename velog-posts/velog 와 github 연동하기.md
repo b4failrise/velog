@@ -44,9 +44,23 @@ AttributeError: object has no attribute 'description' ```</p>
 <blockquote>
 <p>💬 <strong>entry 객체에 description 속성이 없어서 발생하는 것으로 가정</strong> 💬
   테스트용으로 등록한 게시물에 내용이 없었다.
-  <img alt="" src="https://velog.velcdn.com/images/b4failrise/post/11b4fcd7-9f82-4adf-b7fa-4b682653a54f/image.png" />
-  내용을 추가하여 작성해본다.</p>
+  <img alt="" src="https://velog.velcdn.com/images/b4failrise/post/11b4fcd7-9f82-4adf-b7fa-4b682653a54f/image.png" /></p>
 </blockquote>
 <blockquote>
-<p>🛠️ **** 🛠️</p>
+<p>🛠️ <strong>빈 내용이 없도록 작성</strong> 🛠️
+  위에 해당 게시물에 내용을 추가하여 작성해본다.
+  다른 모든 게시물에는 빈 내용이 있는지는 모르겠다.</p>
+</blockquote>
+<blockquote>
+<p>🚩 성공 결과 🚩
+  <img alt="" src="https://velog.velcdn.com/images/b4failrise/post/7388b9b2-7298-4d16-be56-a6688bbc5b47/image.png" />
+  <img alt="" src="https://velog.velcdn.com/images/b4failrise/post/ba5660e7-0a3c-43ba-b3c6-928b4880b079/image.png" /></p>
+</blockquote>
+<blockquote>
+<p>➡️ 빈 description 예외처리 ➡️</p>
+</blockquote>
+<blockquote>
+<p>❗블로그 수정과 스크립트 수정이 바로 반영되진 않음❗
+  <img alt="" src="https://velog.velcdn.com/images/b4failrise/post/35fe63eb-55ce-462f-b250-2a8e239c7328/image.png" />
+  <img alt="" src="https://velog.velcdn.com/images/b4failrise/post/e44c5106-a289-483d-8c3a-daebd7720c8b/image.png" /></p>
 </blockquote>
