@@ -1,1 +1,0 @@
-<p>description 속성 테스트</p>
