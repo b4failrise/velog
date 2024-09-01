@@ -38,9 +38,9 @@ for entry in feed.entries:
         msg = f'Modify post: {entry.title}'
 
     with open(file_path, 'w', encoding='utf-8') as file:
+        print(entry.title)
         try: 
             file.write(entry.description)  # 글 내용을 파일에 작성
-            print(entry.title)
         except AttributeError as err:
             file.write('')
             print("empty description")
@@ -48,6 +48,7 @@ for entry in feed.entries:
     repo.git.add(file_path)
     if repo.is_dirty():
         repo.git.commit('-m', msg)
+        print(msg)
     else:
         print("No changes to commit")
     
