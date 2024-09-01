@@ -2,7 +2,8 @@
 <h2 id="2-폴더-파일-생성">2. 폴더, 파일 생성</h2>
 <p><img alt="" src="https://velog.velcdn.com/images/b4failrise/post/8a84c89f-4d67-4175-8ab8-c71fc869551a/image.png" /></p>
 <h2 id="3-update_blogyml-파일에-github-action-작성">3. update_blog.yml 파일에 github action 작성</h2>
-<p><code>⛔ git config 계정 및 원격 레포지토리 주소 확인</code></p>
+<p><code>⛔ git config 계정 및 원격 레포지토리 주소 확인</code>
+<code>✔️ GitHub Actions에서 크론 스케줄링은 정확히 1분 단위로 실행되는 것을 보장하지 않을 수 있습니다. GitHub Actions는 매분마다 트리거되도록 설정할 수 있지만, GitHub의 인프라 상태에 따라 약간의 지연이 발생할 수 있습니다. (5분이하로 설정하면 최소 5분마다로도 실행이 안 된다.)</code></p>
 <pre><code>name: Update Blog Posts
 
 
@@ -11,7 +12,7 @@ on:
       branches:
         - master  # 또는 워크플로우를 트리거하고 싶은 브랜치 이름
   schedule:
-    - cron: '* * * * *'  # 매 분마다 실행
+    - cron: '*/6 * * * *'  # 6분마다 실행
 
 jobs:
   update_blog:
@@ -179,9 +180,9 @@ for entry in feed.entries:
         msg = f'Modify post: {entry.title}'
 &gt;
     with open(file_path, 'w', encoding='utf-8') as file:
+        print(entry.title)
         try: 
             file.write(entry.description)  # 글 내용을 파일에 작성
-            print(entry.title)
         except AttributeError as err:
             file.write('')
             print(&quot;empty description&quot;)
@@ -189,6 +190,7 @@ for entry in feed.entries:
     repo.git.add(file_path)
     if repo.is_dirty():
         repo.git.commit('-m', msg)
+        print(msg)
     else:
         print(&quot;No changes to commit&quot;)
 &gt;    
